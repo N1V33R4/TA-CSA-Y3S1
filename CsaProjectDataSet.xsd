@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CsaProjectDataSet" targetNamespace="http://tempuri.org/CsaProjectDataSet.xsd" xmlns:mstns="http://tempuri.org/CsaProjectDataSet.xsd" xmlns="http://tempuri.org/CsaProjectDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CsaProjectConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CsaProjectConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TeacherAttendance.Properties.Settings.GlobalReference.Default.CsaProjectConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AttendanceReportTableAdapter" GeneratorDataComponentClassName="AttendanceReportTableAdapter" Name="AttendanceReport" UserDataComponentName="AttendanceReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CsaProjectConnectionString (Settings)" DbObjectName="CsaProject.dbo.AttendanceReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.AttendanceReport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TeacherID" DataSetColumn="TeacherID" />
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="Present" DataSetColumn="Present" />
+              <Mapping SourceColumn="Absent" DataSetColumn="Absent" />
+              <Mapping SourceColumn="Permission Leave" DataSetColumn="Permission Leave" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CsaProjectDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="CsaProjectDataSet" msprop:Generator_DataSetName="CsaProjectDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AttendanceReport" msprop:Generator_RowEvHandlerName="AttendanceReportRowChangeEventHandler" msprop:Generator_RowDeletedName="AttendanceReportRowDeleted" msprop:Generator_RowDeletingName="AttendanceReportRowDeleting" msprop:Generator_RowEvArgName="AttendanceReportRowChangeEvent" msprop:Generator_TablePropName="AttendanceReport" msprop:Generator_RowChangedName="AttendanceReportRowChanged" msprop:Generator_RowChangingName="AttendanceReportRowChanging" msprop:Generator_TableClassName="AttendanceReportDataTable" msprop:Generator_RowClassName="AttendanceReportRow" msprop:Generator_TableVarName="tableAttendanceReport" msprop:Generator_UserTableName="AttendanceReport">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TeacherID" msprop:Generator_ColumnPropNameInRow="TeacherID" msprop:Generator_ColumnPropNameInTable="TeacherIDColumn" msprop:Generator_ColumnVarNameInTable="columnTeacherID" msprop:Generator_UserColumnName="TeacherID" type="xs:int" minOccurs="0" />
+              <xs:element name="FullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="101" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Present" msprop:Generator_ColumnPropNameInRow="Present" msprop:Generator_ColumnPropNameInTable="PresentColumn" msprop:Generator_ColumnVarNameInTable="columnPresent" msprop:Generator_UserColumnName="Present" type="xs:int" minOccurs="0" />
+              <xs:element name="Absent" msprop:Generator_ColumnPropNameInRow="Absent" msprop:Generator_ColumnPropNameInTable="AbsentColumn" msprop:Generator_ColumnVarNameInTable="columnAbsent" msprop:Generator_UserColumnName="Absent" type="xs:int" minOccurs="0" />
+              <xs:element name="Permission_x0020_Leave" msprop:Generator_ColumnPropNameInRow="Permission_Leave" msprop:Generator_ColumnPropNameInTable="Permission_LeaveColumn" msprop:Generator_ColumnVarNameInTable="columnPermission_Leave" msprop:Generator_UserColumnName="Permission Leave" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
