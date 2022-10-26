@@ -47,14 +47,13 @@ namespace TeacherAttendance
 
             var frm = new Teacher();
             frm.MdiParent = this;
-            frm.Dock = DockStyle.Fill;
             this.WindowState = frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
         private void ចកចញToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void បដរអនកបរបរសToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,7 +71,10 @@ namespace TeacherAttendance
         {
             CheckActiveMDI();
 
-
+            var frm = new PrintReport();
+            frm.MdiParent = this;
+            this.WindowState = frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
         }
     }
 }

@@ -64,73 +64,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
+    <Compile Include="Forms\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin.Designer.cs">
+    <Compile Include="Forms\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Check.cs">
+    <Compile Include="Forms\Check.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Check.Designer.cs">
+    <Compile Include="Forms\Check.Designer.cs">
       <DependentUpon>Check.cs</DependentUpon>
     </Compile>
     <Compile Include="clsCon.cs" />
+    <Compile Include="CsaProjectDataSet.cs">
+      <DependentUpon>CsaProjectDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CsaProjectDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CsaProjectDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="PrintReport.cs">
+    <Compile Include="Forms\PrintReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrintReport.Designer.cs">
+    <Compile Include="Forms\PrintReport.Designer.cs">
       <DependentUpon>PrintReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Teacher.cs">
+    <Compile Include="Forms\Teacher.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Teacher.designer.cs">
+    <Compile Include="Forms\Teacher.designer.cs">
       <DependentUpon>Teacher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Home.cs">
+    <Compile Include="Forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Forms\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Admin.resx">
+    <EmbeddedResource Include="Forms\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Check.resx">
+    <EmbeddedResource Include="Forms\Check.resx">
       <DependentUpon>Check.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrintReport.resx">
+    <EmbeddedResource Include="Forms\PrintReport.resx">
       <DependentUpon>PrintReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Teacher.resx">
+    <EmbeddedResource Include="Forms\Teacher.resx">
       <DependentUpon>Teacher.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Home.resx">
+    <EmbeddedResource Include="Forms\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -144,9 +141,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="AttendanceReport.rdlc" />
-    <EmbeddedResource Include="test.resx">
-      <DependentUpon>test.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="CsaProjectDataSet.xsc">
       <DependentUpon>CsaProjectDataSet.xsd</DependentUpon>
     </None>
@@ -190,5 +184,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

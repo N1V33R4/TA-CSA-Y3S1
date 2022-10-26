@@ -23,32 +23,58 @@
               <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
               <Mapping SourceColumn="Present" DataSetColumn="Present" />
               <Mapping SourceColumn="Absent" DataSetColumn="Absent" />
-              <Mapping SourceColumn="Permission Leave" DataSetColumn="Permission Leave" />
+              <Mapping SourceColumn="Permission Leave" DataSetColumn="Permission" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="CsaProjectConnectionString (Settings)" DbObjectName="CsaProject.dbo.AttendanceReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill_All" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="Fill_All" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="Fill_All">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.AttendanceReport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="CsaProjectConnectionString (Settings)" DbObjectName="CsaProject.dbo.AttendanceReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.AttendanceReport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="CsaProjectConnectionString (Settings)" DbObjectName="CsaProject.dbo.AttendanceReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.AttendanceReport
+WHERE TeacherID = 2</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="CsaProjectDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="CsaProjectDataSet" msprop:Generator_DataSetName="CsaProjectDataSet">
+  <xs:element name="CsaProjectDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="CsaProjectDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="CsaProjectDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="AttendanceReport" msprop:Generator_RowEvHandlerName="AttendanceReportRowChangeEventHandler" msprop:Generator_RowDeletedName="AttendanceReportRowDeleted" msprop:Generator_RowDeletingName="AttendanceReportRowDeleting" msprop:Generator_RowEvArgName="AttendanceReportRowChangeEvent" msprop:Generator_TablePropName="AttendanceReport" msprop:Generator_RowChangedName="AttendanceReportRowChanged" msprop:Generator_RowChangingName="AttendanceReportRowChanging" msprop:Generator_TableClassName="AttendanceReportDataTable" msprop:Generator_RowClassName="AttendanceReportRow" msprop:Generator_TableVarName="tableAttendanceReport" msprop:Generator_UserTableName="AttendanceReport">
+        <xs:element name="AttendanceReport" msprop:Generator_RowEvHandlerName="AttendanceReportRowChangeEventHandler" msprop:Generator_RowDeletedName="AttendanceReportRowDeleted" msprop:Generator_RowDeletingName="AttendanceReportRowDeleting" msprop:Generator_RowEvArgName="AttendanceReportRowChangeEvent" msprop:Generator_TablePropName="AttendanceReport" msprop:Generator_RowChangedName="AttendanceReportRowChanged" msprop:Generator_UserTableName="AttendanceReport" msprop:Generator_RowChangingName="AttendanceReportRowChanging" msprop:Generator_RowClassName="AttendanceReportRow" msprop:Generator_TableClassName="AttendanceReportDataTable" msprop:Generator_TableVarName="tableAttendanceReport">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TeacherID" msprop:Generator_ColumnPropNameInRow="TeacherID" msprop:Generator_ColumnPropNameInTable="TeacherIDColumn" msprop:Generator_ColumnVarNameInTable="columnTeacherID" msprop:Generator_UserColumnName="TeacherID" type="xs:int" minOccurs="0" />
-              <xs:element name="FullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+              <xs:element name="TeacherID" msprop:Generator_ColumnPropNameInTable="TeacherIDColumn" msprop:Generator_ColumnPropNameInRow="TeacherID" msprop:Generator_UserColumnName="TeacherID" msprop:Generator_ColumnVarNameInTable="columnTeacherID" type="xs:int" minOccurs="0" />
+              <xs:element name="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_UserColumnName="FullName" msprop:Generator_ColumnVarNameInTable="columnFullName" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="101" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Present" msprop:Generator_ColumnPropNameInRow="Present" msprop:Generator_ColumnPropNameInTable="PresentColumn" msprop:Generator_ColumnVarNameInTable="columnPresent" msprop:Generator_UserColumnName="Present" type="xs:int" minOccurs="0" />
-              <xs:element name="Absent" msprop:Generator_ColumnPropNameInRow="Absent" msprop:Generator_ColumnPropNameInTable="AbsentColumn" msprop:Generator_ColumnVarNameInTable="columnAbsent" msprop:Generator_UserColumnName="Absent" type="xs:int" minOccurs="0" />
-              <xs:element name="Permission_x0020_Leave" msprop:Generator_ColumnPropNameInRow="Permission_Leave" msprop:Generator_ColumnPropNameInTable="Permission_LeaveColumn" msprop:Generator_ColumnVarNameInTable="columnPermission_Leave" msprop:Generator_UserColumnName="Permission Leave" type="xs:int" minOccurs="0" />
+              <xs:element name="Present" msprop:Generator_ColumnPropNameInTable="PresentColumn" msprop:Generator_ColumnPropNameInRow="Present" msprop:Generator_UserColumnName="Present" msprop:Generator_ColumnVarNameInTable="columnPresent" type="xs:int" minOccurs="0" />
+              <xs:element name="Absent" msprop:Generator_ColumnPropNameInTable="AbsentColumn" msprop:Generator_ColumnPropNameInRow="Absent" msprop:Generator_UserColumnName="Absent" msprop:Generator_ColumnVarNameInTable="columnAbsent" type="xs:int" minOccurs="0" />
+              <xs:element name="Permission" msprop:Generator_ColumnPropNameInTable="PermissionColumn" msprop:Generator_ColumnPropNameInRow="Permission" msprop:Generator_UserColumnName="Permission" msprop:Generator_ColumnVarNameInTable="columnPermission" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -213,8 +213,8 @@
             this.sexSelect.Font = new System.Drawing.Font("Chenla", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sexSelect.FormattingEnabled = true;
             this.sexSelect.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
+            "ប្រុស",
+            "ស្រី"});
             this.sexSelect.Location = new System.Drawing.Point(161, 191);
             this.sexSelect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.sexSelect.Name = "sexSelect";
@@ -247,6 +247,9 @@
             // 
             // view
             // 
+            this.view.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.view.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.view.Location = new System.Drawing.Point(13, 490);
             this.view.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

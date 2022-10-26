@@ -9,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TeacherAttendance;
 
 namespace Lecturer
 {
     public partial class Teacher : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=BETELGEUSE\\SQLEXPRESS;Initial Catalog=UniversityDB;Persist Security Info=True;User ID=sa;Password=12345678");
+        //SqlConnection con = new SqlConnection("Data Source=BETELGEUSE\\SQLEXPRESS;Initial Catalog=UniversityDB;Persist Security Info=True;User ID=sa;Password=12345678");
         OpenFileDialog opnfd;
+
         public Teacher()
         {
             InitializeComponent();
@@ -23,7 +25,7 @@ namespace Lecturer
 
         void BindData()
         {   
-            var cmd = new SqlCommand("SELECT * FROM LecturerInfo", con);
+            var cmd = new SqlCommand("SELECT * FROM Tbl_Teacher", clsCon.cn);
             var sd = new SqlDataAdapter(cmd);
             var dt = new DataTable();
 
@@ -33,11 +35,10 @@ namespace Lecturer
 
         private void insertBtn_Click(object sender, EventArgs e)
         {
-            con.Open();
-            var sql = "INSERT INTO LecturerInfo(FirstName, LastName, Sex, DOB, Address, Phone, Email, Photo, EmployeeCode) " +
+            var sql = "INSERT INTO Tbl_Teacher(FirstName, LastName, Sex, DOB, Address, Phone, Email, Photo, EmployeeCode) " +
                       "VALUES(@FirstName, @LastName, @Sex, @DOB, @Address, @Phone, @Email, @Photo, @EmployeeCode)";
 
-            using(SqlCommand cmd = new SqlCommand(sql, con))
+            using(SqlCommand cmd = new SqlCommand(sql, clsCon.cn))
             {
                 cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = firstnameTb.Text;
                 cmd.Parameters.AddWithValue("@LastName", lastnameTb.Text);
@@ -60,7 +61,6 @@ namespace Lecturer
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Successfully inserted!", "Success");
             }
-            con.Close();
             BindData();
         }
 
@@ -83,17 +83,16 @@ namespace Lecturer
 
         private void updateBtn_Click(object sender, EventArgs e)
         {
-            con.Open();
-            var sql = "UPDATE LecturerInfo SET FirstName = @FirstName, LastName = @LastName, Sex = @Sex, " +
+            var sql = "UPDATE Tbl_Teacher SET FirstName = @FirstName, LastName = @LastName, Sex = @Sex, " +
                       "DOB = @DOB, Address = @Address, Phone = @Phone, Email = @Email, Photo = @Photo, " +
                       "EmployeeCode = @EmployeeCode " +
-                      "WHERE LecturerID = @ID;";
+                      "WHERE TeacherID = @ID;";
 
-            using (SqlCommand cmd = new SqlCommand(sql, con))
+            using (SqlCommand cmd = new SqlCommand(sql, clsCon.cn))
             {
                 cmd.Parameters.AddWithValue("@FirstName", firstnameTb.Text);
                 cmd.Parameters.AddWithValue("@LastName", lastnameTb.Text);
-                cmd.Parameters.AddWithValue("@Sex", sexSelect.Text[0]);
+                cmd.Parameters.AddWithValue("@Sex", sexSelect.Text);
                 cmd.Parameters.AddWithValue("@DOB", dobDtp.Value);
                 cmd.Parameters.AddWithValue("@Address", addressTb.Text);
                 cmd.Parameters.AddWithValue("@Phone", phoneTb.Text);
@@ -114,7 +113,6 @@ namespace Lecturer
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Successfully updated!", "Success");
             }
-            con.Close();
             BindData();
         }
 
@@ -124,17 +122,15 @@ namespace Lecturer
             {
                 if (MessageBox.Show("Are you sure you want to delete?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk) == DialogResult.Yes)
                 {
-                    con.Open();
-                    var sql = "DELETE LecturerInfo WHERE LecturerID = @ID;";
+                    var sql = "DELETE Tbl_Teacher WHERE TeacherID = @ID;";
 
-                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    using (SqlCommand cmd = new SqlCommand(sql, clsCon.cn))
                     {
                         cmd.Parameters.AddWithValue("@ID", int.Parse(idTb.Text));
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Successfully deleted!", "Success");
                     }
-                    con.Close();
                     BindData();
                 }
             }
@@ -146,7 +142,7 @@ namespace Lecturer
         /*
         private void searchIdBtn_Click(object sender, EventArgs e)
         {
-            var cmd = new SqlCommand("SELECT * FROM LecturerInfo WHERE LecturerID = @ID", con);
+            var cmd = new SqlCommand("SELECT * FROM Tbl_Teacher WHERE TeacherID = @ID", clsCon.cn);
             cmd.Parameters.AddWithValue("@ID", int.Parse(idTb.Text));
 
             var sd = new SqlDataAdapter(cmd);
@@ -158,7 +154,7 @@ namespace Lecturer
         */
         private void searchIDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var cmd = new SqlCommand("SELECT * FROM LecturerInfo WHERE LecturerID = @ID", con);
+            var cmd = new SqlCommand("SELECT * FROM Tbl_Teacher WHERE TeacherID = @ID", clsCon.cn);
             cmd.Parameters.AddWithValue("@ID", int.Parse(idTb.Text));
 
             var sd = new SqlDataAdapter(cmd);
@@ -178,7 +174,7 @@ namespace Lecturer
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.view.Rows[e.RowIndex];
-                idTb.Text = row.Cells["LecturerID"].Value.ToString();
+                idTb.Text = row.Cells["TeacherID"].Value.ToString();
                 lastnameTb.Text = row.Cells["LastName"].Value.ToString();
                 firstnameTb.Text = row.Cells["FirstName"].Value.ToString();
                 sexSelect.Text = row.Cells["Sex"].Value.ToString();
@@ -191,6 +187,7 @@ namespace Lecturer
                 addressTb.Text = row.Cells["Address"].Value.ToString();
                 phoneTb.Text = row.Cells["Phone"].Value.ToString();
                 emailTb.Text = row.Cells["Email"].Value.ToString();
+                empCodeTb.Text = row.Cells["EmployeeCode"].Value.ToString();
 
                 if (!DBNull.Value.Equals(row.Cells["Photo"].Value))
                 {
@@ -214,6 +211,7 @@ namespace Lecturer
                 addressTb.Text = "";
                 phoneTb.Text = "";
                 emailTb.Text = "";
+                empCodeTb.Text = "";
 
                 imagePreview.Image = null;
                 opnfd = null;
@@ -222,8 +220,8 @@ namespace Lecturer
 
         private void searchTb_TextChanged(object sender, EventArgs e)
         {
-            var cmd = new SqlCommand("SELECT * FROM LecturerInfo " +
-                                     "WHERE FirstName LIKE Concat('%',@Query,'%') OR LastName LIKE Concat('%',@Query,'%')", con);
+            var cmd = new SqlCommand("SELECT * FROM Tbl_Teacher " +
+                                     "WHERE FirstName LIKE Concat('%',@Query,'%') OR LastName LIKE Concat('%',@Query,'%')", clsCon.cn);
             cmd.Parameters.AddWithValue("@Query", searchTb.Text);
             var sd = new SqlDataAdapter(cmd);
             var dt = new DataTable();

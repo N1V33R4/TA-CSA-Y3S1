@@ -287,7 +287,7 @@ namespace TeacherAttendance {
             
             private global::System.Data.DataColumn columnAbsent;
             
-            private global::System.Data.DataColumn columnPermission_Leave;
+            private global::System.Data.DataColumn columnPermission;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -356,9 +356,9 @@ namespace TeacherAttendance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Permission_LeaveColumn {
+            public global::System.Data.DataColumn PermissionColumn {
                 get {
-                    return this.columnPermission_Leave;
+                    return this.columnPermission;
                 }
             }
             
@@ -399,14 +399,14 @@ namespace TeacherAttendance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public AttendanceReportRow AddAttendanceReportRow(int TeacherID, string FullName, int Present, int Absent, int Permission_Leave) {
+            public AttendanceReportRow AddAttendanceReportRow(int TeacherID, string FullName, int Present, int Absent, int Permission) {
                 AttendanceReportRow rowAttendanceReportRow = ((AttendanceReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TeacherID,
                         FullName,
                         Present,
                         Absent,
-                        Permission_Leave};
+                        Permission};
                 rowAttendanceReportRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAttendanceReportRow);
                 return rowAttendanceReportRow;
@@ -433,7 +433,7 @@ namespace TeacherAttendance {
                 this.columnFullName = base.Columns["FullName"];
                 this.columnPresent = base.Columns["Present"];
                 this.columnAbsent = base.Columns["Absent"];
-                this.columnPermission_Leave = base.Columns["Permission Leave"];
+                this.columnPermission = base.Columns["Permission"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -447,8 +447,8 @@ namespace TeacherAttendance {
                 base.Columns.Add(this.columnPresent);
                 this.columnAbsent = new global::System.Data.DataColumn("Absent", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAbsent);
-                this.columnPermission_Leave = new global::System.Data.DataColumn("Permission Leave", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPermission_Leave);
+                this.columnPermission = new global::System.Data.DataColumn("Permission", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPermission);
                 this.columnFullName.MaxLength = 101;
             }
             
@@ -656,17 +656,17 @@ namespace TeacherAttendance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Permission_Leave {
+            public int Permission {
                 get {
                     try {
-                        return ((int)(this[this.tableAttendanceReport.Permission_LeaveColumn]));
+                        return ((int)(this[this.tableAttendanceReport.PermissionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Permission Leave\' in table \'AttendanceReport\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Permission\' in table \'AttendanceReport\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAttendanceReport.Permission_LeaveColumn] = value;
+                    this[this.tableAttendanceReport.PermissionColumn] = value;
                 }
             }
             
@@ -720,14 +720,14 @@ namespace TeacherAttendance {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPermission_LeaveNull() {
-                return this.IsNull(this.tableAttendanceReport.Permission_LeaveColumn);
+            public bool IsPermissionNull() {
+                return this.IsNull(this.tableAttendanceReport.PermissionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPermission_LeaveNull() {
-                this[this.tableAttendanceReport.Permission_LeaveColumn] = global::System.Convert.DBNull;
+            public void SetPermissionNull() {
+                this[this.tableAttendanceReport.PermissionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -894,7 +894,7 @@ namespace TeacherAttendance.CsaProjectDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("FullName", "FullName");
             tableMapping.ColumnMappings.Add("Present", "Present");
             tableMapping.ColumnMappings.Add("Absent", "Absent");
-            tableMapping.ColumnMappings.Add("Permission Leave", "Permission Leave");
+            tableMapping.ColumnMappings.Add("Permission Leave", "Permission");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -908,12 +908,27 @@ namespace TeacherAttendance.CsaProjectDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.Attendan" +
                 "ceReport";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.Attendan" +
+                "ceReport";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.Attendan" +
+                "ceReport";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT TeacherID, FullName, Present, Absent, [Permission Leave] FROM dbo.Attendan" +
+                "ceReport\r\nWHERE TeacherID = 2";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -938,6 +953,45 @@ namespace TeacherAttendance.CsaProjectDataSetTableAdapters {
             CsaProjectDataSet.AttendanceReportDataTable dataTable = new CsaProjectDataSet.AttendanceReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Fill_All(CsaProjectDataSet.AttendanceReportDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(CsaProjectDataSet.AttendanceReportDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy1(CsaProjectDataSet.AttendanceReportDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
     }
     
